@@ -8,80 +8,41 @@
 #include <String>
 #include <iostream>
 
-class Actor
-{
-private:
-    /* Requires:
-     * Modifies:
-     * Effects: the string that the user uses to recognize the program
-     */
-    std::string id;
-    /* Requires:
-     * Modifies:
-     * Effects: the integer representation of current health, 0 or below being dead
-     */
-    int health;
-    /* Requires:
-     * Modifies:
-     * Effects: the current strength, which corrects to damage at a 1:1 ratio
-     */
-    int strength;
-    /* Requires:
-     * Modifies:
-     * Effects: the current speed, where the actor with the highest speed attacks first
-     */
-    int speed;
+/* This file represents an Actor in a game or world or whatever. They have 4 attributes:
+ * Health - the amount of fhealth they have -- at 0 or less they have 0 fhealth
+ * Speed - The high the fspeed, the more likely they will get to attack first
+ * Strength - Damage is calculated on a 1:1 ratio with this attribute
+ * ID - The ID is simply the name of the actor that the player will see - it need not be unique, although should be to avoid confusion
+ *
+ * Notes:
+ * Calculate damage returns fstrength since damage is just equivalent to fstrength
+ * Apply Damage will both negate the damage inputed from the fhealth and ALSO print out that the actor has died if their fhealth has dropped
+ *              below 0
+ * is_alive will return whether or not the current fhealth is above 0
+ *
+ */
 
-    /* Requires: int hp that we are setting health to
- * Modifies: health
- * Effects: sets health to hp
- */
-    void setHealth(int hp);
-    /* Requires: int str
-  * Modifies: strength
-  * Effects: sets strength to the int str
-  */
-    void setStrength(int str);
-    /* Requires: int spd
- * Modifies: speed
- * Effects: sets speed to the int spd
- */
-    void setSpeed(int spd);
+ class Actor {
+private:
+    std::string fid;
+    int fhealth;
+    int fstrength;
+    int fspeed;
+
+    void set_health(int phealth);
+    void set_strength(int pstrength);
+    void set_speed(int pspeed);
 
 public:
-    /* Requires: string i, int hp, int str, int spd
- * Modifies: id, health, strength, speed
- * Effects: it sets the fields to the corresponding parameters
- */
-    Actor(std::string i, int hp, int str, int spd);
+    Actor(std::string pid, int phealth, int pstrength, int pspeed);
 
-    /* Requires:
- * Modifies:
- * Effects: it returns the damage based on the current strength
- */
-    int calculateDamage();
-    /* Requires: int damage -- the damage done
- * Modifies: health
- * Effects: it subtracts the damage dealt from health and will print if the actor is dead if they are dead
- */
-    void applyDamage(int dmg);
+    int calculate_damage();
+    void apply_damage(int dmg);
 
-    /* Requires:
- * Modifies:
- * Effects: returns the current health
- */
-    int getHealth();
-    /* Requires:
- * Modifies:
- * Effects: returns the current speed
- */
-    int getSpeed();
+    int get_health();
+    int get_speed();
 
-    /* Requires:
- * Modifies:
- * Effects: returns whether or not health is greater than 0
- */
-    bool isAlive();
+    bool is_alive();
 };
 
 #endif //CS120_ACTOR_H

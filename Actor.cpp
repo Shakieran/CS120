@@ -6,56 +6,46 @@
 
 
 
-Actor::Actor(std::string i, int hp, int str, int spd)
-{
-    setHealth(hp);
-    setSpeed(spd);
-    setStrength(str);
-    id = i;
+Actor::Actor(std::string pid, int phealth, int pstrength, int pspeed) {
+    set_health(phealth);
+    set_speed(pspeed);
+    set_strength(pstrength);
+    fid = pid;
 }
 
-void Actor::setHealth(int hp)
-{
-    health = hp;
+void Actor::set_health(int phealth) {
+    fhealth = phealth;
 }
 
-void Actor::setStrength(int str)
-{
-    strength = str;
+void Actor::set_strength(int pstrength) {
+    fstrength = pstrength;
 }
 
-void Actor::setSpeed(int spd)
-{
-    speed = spd;
+void Actor::set_speed(int pspeed) {
+    fspeed = pspeed;
 }
 
-int Actor::calculateDamage()
-{
-    return strength;
+int Actor::calculate_damage() {
+    return fstrength;
 }
 
-void Actor::applyDamage(int dmg)
-{
-    health -= dmg;
-    std::cout << id << " took " << dmg << " damage and has " << health << " health" << std::endl;
+void Actor::apply_damage(int dmg) {
+    fhealth -= dmg;
+    std::cout << fid << " took " << dmg << " damage and has " << fhealth << " fhealth" << std::endl;
 
-    if(!isAlive())
-    {
-        std::cout << id << " is dead" << std::endl;
+    if(!is_alive()) {
+        std::cout << fid << " is dead" << std::endl;
     }
 }
 
-int Actor::getHealth()
-{
-    return health;
+int Actor::get_health() {
+    return fhealth;
 }
 
-int Actor::getSpeed()
-{
-    return speed;
+int Actor::get_speed() {
+    return fspeed;
 }
 
-bool Actor::isAlive()
-{
-    return getHealth() > 0;
+bool Actor::is_alive() {
+    return get_health() > 0;
 }
