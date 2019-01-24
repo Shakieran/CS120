@@ -8,10 +8,10 @@ Hanging Braces
 # My Thoughts
 I prefer the hanging braces because I was raised on them. I slightly prefer no prefixes for that reason, but I can see the use of using prefixes. I prefer camel case just because it's what I'm used to (except with all caps constants) but it makes little difference to me. I think comments at the top of the file as well as above methods is best so prefer both comment styles together.
 # ERRORS
-Runtime error: infinite loop, I had no exit condition for the while loop in the main method
-Runtime error: when I created the actors, I prompted for speed when I set strength and vice versa, so I had to use the debugger in order to
+ - Runtime error: infinite loop, I had no exit condition for the while loop in the main method
+ - Runtime error: when I created the actors, I prompted for speed when I set strength and vice versa, so I had to use the debugger in order to
   see the variables get assigned whereas it just happens quickly in runtime.
-Compile error: no main method, my bad
+ - Compile error: no main method, my bad
   c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../libmingw32.a(main.o):(.text.startup+0xa0): undefined reference to `WinMain@16'
   collect2.exe: error: ld returned 1 exit status
   mingw32-make.exe[3]: *** [CS120.exe] Error 1
